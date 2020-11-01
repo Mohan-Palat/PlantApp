@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include ('../partials/head.ejs') %>
+  </head>
+  <body>
+    <nav>
+      <%- include ('../partials/nav.ejs') %>
+    </nav>
+    <div class="container">
+
+      <h1>Garden Index Page</h1>
+      <ul>
+        <% for (let garden of gardens ) { %>
+          <li>
+            <a href="/gardens/<%=garden._id%>">
+              <%= garden.gardenName %>
+          </li>
+       <% } %>
+      </ul>
+    </div>
+  </body>
+</html>
