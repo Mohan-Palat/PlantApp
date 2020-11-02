@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include ('../partials/head.ejs') %>
+  </head>
+  <body>
+    <nav>
+      <%- include ('../partials/nav.ejs') %>
+    </nav>
+
+	<h1>Create a new Garden</h1> 
+	<hr> 
+	<div> 
+		<form action="/plants" method="POST" enctype="multipart/form-data"> 
+			<div> 
+				<label for="gardenName">  gardenName: 
+                </label> 
+				<input type="text" id="gardenName" placeholder="gardenName"
+					value="" name="gardenName" required> 
+			</div> 
+			<div> 
+				<label for="description">Garden Description</label> 
+				<textarea id="description" name="description" value="" rows="2"
+						placeholder="description" required> 
+				</textarea> 
+            </div> 
+         
+
+			<div> 
+				<label for="image">Upload Image</label> 
+				<input type="file" id="image"
+					name="image" value="" required> 
+			</div> 
+			<div> 
+				<button type="submit">Submit</button> 
+			</div> 
+		</form> 
+	</div> 
+
+	<hr> 
+
+	<h1>Uploaded Images</h1> 
+	 
+</body> 
+
+</html> 

@@ -7,11 +7,11 @@ const gardenSchema = Schema({
   description: {type: String ,
                required: true
                },
-  gardenType:  {
-                type: String,
-                required:true
-                },
-  image:        [{ 
+  //gardenType:  {
+              //  type: String,
+              //  required:true
+               // },
+  img:      [ { 
                 data:Buffer,
                 contentType:String
                 }],

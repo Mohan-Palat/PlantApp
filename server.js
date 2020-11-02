@@ -44,10 +44,10 @@ app.use(
 //Database
 //___________________
 // How to connect to the database either via heroku or locally
-//const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/'+ 'sunitha-project2';
-const mongodbURI = process.env.MONGODBURI
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/'+ 'sunitha-project2';
+//const mongodbURI = process.env.MONGODBURI
 mongoose.connect(
-    mongodbURI,
+    MONGODB_URI,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -55,7 +55,7 @@ mongoose.connect(
       useCreateIndex: true,
     },
     () => {
-      console.log('the connection with mongod is established at', mongodbURI)
+      console.log('the connection with mongod is established at', MONGODB_URI)
     }
   )
 // Error / success

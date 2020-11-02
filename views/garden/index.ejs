@@ -13,11 +13,23 @@
       <ul>
         <% for (let garden of gardens ) { %>
           <li>
-            <a href="/gardens/<%=garden._id%>">
-              <%= garden.gardenName %>
+            <a href="/plants/<%=garden._id%>">
+             GardenName: <%= garden.gardenName %>
+              <br/>
+              <img src="data:garden/<%=garden.img[0].contentType%>;base64, 
+              <%=garden.img[0].data.toString('base64')%>"> 
+
+           
+             
           </li>
        <% } %>
       </ul>
     </div>
+
+    <hr> 
+  
+   
+
+  
   </body>
 </html>
