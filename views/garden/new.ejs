@@ -7,12 +7,17 @@
     <nav>
       <%- include ('../partials/nav.ejs') %>
     </nav>
+ <form action="/plants" method="POST" enctype="multipart/form-data"  class="signup-form"> 
+         <!-- form header -->
+      <div class="form-header">
+        <h1>Login</h1>
+      </div>
 
-	<h1>Create a new Garden</h1> 
-	<hr> 
-	<div> 
-		<form action="/plants" method="POST" enctype="multipart/form-data"> 
-			<div> 
+        <!-- form body -->
+        <div class="form-body">
+
+    
+    <div> 
 				<label for="gardenName">  gardenName: 
                 </label> 
 				<input type="text" id="gardenName" placeholder="gardenName"

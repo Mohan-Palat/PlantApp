@@ -1,14 +1,24 @@
-<ul class="right">
-  <li><a href="/plants/new">Create a new Garden</a></li>
+
+<section class="navBar-wrapper">
+  <nav class= "navBar">
+    <!-- navigation bar -->
+    <div class="container">
+
+  <a href="/plants/new">Showcase my Garden</a>
+  <a href="/plants/browse">Visit others Garden</a>
+  <a href="/plants/browse">Explore Hardiness Zone</a>
+  <a href="/plants/browse">What can I plant</a>
   <% if (currentUser) { %>
-  <li>Welcome <%= currentUser.username %></li>
-  <li>
+  Welcome <%= currentUser.username %>
+
     <form action="/sessions?_method=DELETE" method="POST">
       <input type="submit" value="Log Out" class="btn-small red" />
     </form>
-  </li>
+
   <% } else { %>
-  <li><a href="/users/new">Sign Up</a></li>
-  <li><a href="/sessions/new">Log In</a></li>
+  <a href="/users/new">Sign Up</a></li>
+  <a href="/sessions/new">Log In</a></li>
   <% } %>
-</ul>
+    </div>
+</nav>
+</section>

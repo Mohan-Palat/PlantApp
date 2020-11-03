@@ -109,12 +109,12 @@ gardens.get('/', (req, res) => {
 gardens.get('/:id', (req, res) => {
     console.log('garden by id');
     Garden.findById(req.params.id, (error, foundGarden) => {
-        res.setHeader('content-type', foundGarden.img[0].contentType);
-        res.send(foundGarden.img[0].data);
+        //res.setHeader('content-type', foundGarden.img[0].contentType);
+        //res.send(foundGarden.img[0].data);
         console.log(foundGarden);
-     
-    })
+     })
   })
+
 
 
   module.exports = gardens
