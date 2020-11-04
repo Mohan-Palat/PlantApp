@@ -93,6 +93,9 @@ app.use('/sessions', sessionsController)
 const gardenController = require('./controllers/garden_controller.js')
 app.use('/plants', gardenController)
 
+const hardnessController = require('./controllers/hardness_controller.js')
+app.use('/hardness', hardnessController)
+
 
 // Routes
 app.get('/', (req, res) => {

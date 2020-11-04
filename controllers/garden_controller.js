@@ -40,10 +40,7 @@ const isAuthenticated = (req, res, next) => {
 }
 // NEW
  gardens.get('/new', (req, res) => {
-    console.log("hhhhh");
-    console.log('root--',root)
-   // res.send("hello world");
-     res.render(
+    res.render(
        'garden/new.ejs'
        , {currentUser: req.session.currentUser}
     )
