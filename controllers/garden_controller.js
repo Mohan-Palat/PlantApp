@@ -6,6 +6,20 @@ const fs = require('fs');
 const path = require('path'); 
 const multer = require('multer'); 
 
+//gets your app's root path
+const root = path.dirname(require.main.filename)
+console.log(root)
+
+// router.get('/:id', async (req, res) => {
+//     let movie = await Movie.findById(req.params.id).populate('actors');
+//     console.log(movie);
+//     res.render('movies/show', { movie, currentUser: req.session.currentUser });
+//   });
+  
+//   router.post('/', async (req, res) => {
+//     let movie = await Movie.create(req.body);
+//     res.redirect(`/movies/${movie.id}`);
+//   });
 const storage = multer.diskStorage({ 
   destination: (req, file, cb) => { 
       cb(null, 'uploads') 
@@ -27,6 +41,7 @@ const isAuthenticated = (req, res, next) => {
 // NEW
  gardens.get('/new', (req, res) => {
     console.log("hhhhh");
+    console.log('root--',root)
    // res.send("hello world");
      res.render(
        'garden/new.ejs'
@@ -43,7 +58,7 @@ gardens.post('/', upload.single('image'), (req, res, next) => {
         gardenName: req.body.gardenName,
         description: req.body.description,
         img: { 
-            data: fs.readFileSync(path.join( '/Users/sunitha/sei/project-2/uploads/' + req.file.filename)), 
+            data: fs.readFileSync(path.join( root+ '/uploads/' + req.file.filename)), 
             contentType: req.file.mimetype
            
          } ,
@@ -63,8 +78,8 @@ gardens.post('/', upload.single('image'), (req, res, next) => {
    }); 
 
 // INDEX
-gardens.get('/show', (req, res) => {
-    Garden.find({}, (error, allGarden) => {
+gardens.get('/show', async(req, res) => {
+    await Garden.find({}, (error, allGarden) => {
          console.log(error);
          console.log('all garden',allGarden);
            res.render('garden/show.ejs', {
@@ -78,9 +93,9 @@ gardens.get('/show', (req, res) => {
 
 
 // SHOW details
-gardens.get('/:id', (req, res) => {
+gardens.get('/:id', async(req, res) => {
     console.log('garden by id');
-    Garden.findById(req.params.id, (error, foundGarden) => {
+    await Garden.findById(req.params.id, (error, foundGarden) => {
         res.render('garden/showdetails.ejs', {
             garden: foundGarden
            ,currentUser: req.session.currentUser
@@ -91,8 +106,8 @@ gardens.get('/:id', (req, res) => {
 //DELETE
 
 // DELETE
-gardens.delete('/:id', (req, res) => {
-    Garden.findByIdAndRemove(req.params.id, (error) => {
+gardens.delete('/:id',async (req, res) => {
+   await Garden.findByIdAndRemove(req.params.id, (error) => {
         console.log('deleted')
         res.render('garden/index.ejs',{
             currentUser: req.session.currentUser,
@@ -111,13 +126,13 @@ gardens.get('/', (req, res) => {
 
 
 
-gardens.get('/:id/edit', (req, res) => {
+gardens.get('/:id/edit', async(req, res) => {
         // app.get('/:userId/tweets/:tweetId/edit', (req, res) => {
        // set the value of the user and tweet ids
        const userId = req.params.userId;
        const gardenId = req.params.id;
        // find user in db by id
-       Garden.findById(req.params.id, (error, foundGarden) => {
+      await Garden.findById(req.params.id, (error, foundGarden) => {
            res.render('garden/edit.ejs', {
                garden: foundGarden
               ,currentUser: req.session.currentUser
@@ -126,19 +141,19 @@ gardens.get('/:id/edit', (req, res) => {
 })
 
 // UPDATE garden EMBEDDED IN A USER DOCUMENT
-    gardens.put('/:id', (req, res) => {
+    gardens.put('/:id', async(req, res) => {
        console.log('PUT ROUTE');
        // set the value of the user and tweet ids
        const userId = req.params.userId;
        const gardenId = req.params.id;
        // find user in db by id
-       Garden.findById(userId, (err, foundGarden) => {
+       await Garden.findById(userId, (err, foundGarden) => {
         // update garden and completed with data from request body
         const obj = { 
             gardenName: req.body.gardenName,
             description: req.body.description,
             img: { 
-                data: fs.readFileSync(path.join( '/Users/sunitha/sei/project-2/uploads/' + req.file.filename)), 
+                data: fs.readFileSync(path.join(root+ '/uploads/' + req.file.filename)), 
                 contentType: req.file.mimetype
                } ,
              } 
@@ -160,8 +175,4 @@ gardens.get('/:id/edit', (req, res) => {
            });
 });
 
-
-
-  
-  
 module.exports = gardens

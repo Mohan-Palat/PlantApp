@@ -7,11 +7,19 @@
     <nav>
       <%- include ('../partials/nav.ejs') %>
     </nav>
+    
+    <% if (errormessage) { %>
+      
+        <div class="form-header">
+            <h1><%= errormessage %></h1>
+          </div>
 
-    <div id='status' class='invisible'><%= errormessage %>XCZCXZC</div>
+
+       
+    
+      <% } %>
 
   
    
-  
   </body>
 </html>

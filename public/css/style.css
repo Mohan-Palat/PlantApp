@@ -225,12 +225,14 @@ li a {
   .invisible {
     display: none;
     visibility: hidden;
-    color:white;
-       }
+    color:black;
+    background-color: blanchedalmond;
+    }
 
    .show{
       
         width:650px;
+        height:500px;
         margin:30px auto;
         background: rgb(125,91,197);
         border-radius: 10px;
@@ -238,6 +240,7 @@ li a {
         padding-left: 30px;
         padding-right: 30px;
         padding-top: 30px;
+        overflow: auto;
        
      }
     .show-header  {
