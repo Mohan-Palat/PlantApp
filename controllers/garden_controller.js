@@ -1,12 +1,10 @@
 const express = require('express')
 const Garden= require('../models/gardens.js')
 const gardens = express.Router()
-
-
 const User = require('../models/users.js');
-var fs = require('fs'); 
-var path = require('path'); 
-var multer = require('multer'); 
+const fs = require('fs'); 
+const path = require('path'); 
+const multer = require('multer'); 
 
 const storage = multer.diskStorage({ 
   destination: (req, file, cb) => { 
@@ -27,7 +25,7 @@ const isAuthenticated = (req, res, next) => {
   }
 }
 // NEW
-gardens.get('/new', (req, res) => {
+ gardens.get('/new', (req, res) => {
     console.log("hhhhh");
    // res.send("hello world");
      res.render(
@@ -36,9 +34,7 @@ gardens.get('/new', (req, res) => {
     )
   })
 
-
-
-  gardens.post('/', upload.single('image'), (req, res, next) => { 
+gardens.post('/', upload.single('image'), (req, res, next) => { 
     console.log("success");
     let fname='uploads/'+req.file.filename;
     console.log('filepath====',req.file.path);
@@ -57,16 +53,12 @@ gardens.get('/new', (req, res) => {
             console.log(err); 
         } 
         else { 
-            //console.log('what is item--->',item);
-            //console.log('success'); 
             res.render('garden/index.ejs', {
                currentUser: req.session.currentUser
                ,errormessage: 'Success-Record Created' 
                });    
-        
-         } 
-        
-     }); 
+            } 
+       }); 
 
    }); 
 
@@ -93,8 +85,6 @@ gardens.get('/:id', (req, res) => {
             garden: foundGarden
            ,currentUser: req.session.currentUser
          });
-        //res.setHeader('content-type', foundGarden.img[0].contentType);
-        //res.send(foundGarden.img[0].data);
         //console.log(foundGarden);
      })
   })
@@ -112,13 +102,66 @@ gardens.delete('/:id', (req, res) => {
     });
   });
   
-
-  gardens.get('/', (req, res) => {
+gardens.get('/', (req, res) => {
     res.render('garden/index.ejs',{
         currentUser: req.session.currentUser,
         errormessage: '' 
      });
     });
+
+
+
+gardens.get('/:id/edit', (req, res) => {
+        // app.get('/:userId/tweets/:tweetId/edit', (req, res) => {
+       // set the value of the user and tweet ids
+       const userId = req.params.userId;
+       const gardenId = req.params.id;
+       // find user in db by id
+       Garden.findById(req.params.id, (error, foundGarden) => {
+           res.render('garden/edit.ejs', {
+               garden: foundGarden
+              ,currentUser: req.session.currentUser
+            });
+     });
+})
+
+// UPDATE garden EMBEDDED IN A USER DOCUMENT
+    gardens.put('/:id', (req, res) => {
+       console.log('PUT ROUTE');
+       // set the value of the user and tweet ids
+       const userId = req.params.userId;
+       const gardenId = req.params.id;
+       // find user in db by id
+       Garden.findById(userId, (err, foundGarden) => {
+        // update garden and completed with data from request body
+        const obj = { 
+            gardenName: req.body.gardenName,
+            description: req.body.description,
+            img: { 
+                data: fs.readFileSync(path.join( '/Users/sunitha/sei/project-2/uploads/' + req.file.filename)), 
+                contentType: req.file.mimetype
+               } ,
+             } 
+
+             Garden.save(obj, (err, item) => { 
+                if (err) { 
+                    console.log(err); 
+                } 
+                else { 
+                    //console.log('what is item--->',item);
+                    //console.log('success'); 
+                    res.render('garden/index.ejs', {
+                       currentUser: req.session.currentUser
+                       ,errormessage: 'Success-Record Created' 
+                       });    
+                    } 
+               }); 
+       
+           });
+});
+
+
+
   
   
 module.exports = gardens

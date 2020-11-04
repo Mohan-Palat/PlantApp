@@ -21,7 +21,7 @@
           <li><div>
             <a href="/plants/<%=garden._id%>" class="btn">
               Show  <%= garden.gardenName %> </a>
-             <a href="/plants/<%=garden._id%>" class="btn">
+             <a href="/plants/<%=garden._id%>/edit" class="btn">
                 Edit  <%= garden.gardenName %> </a>
               <form action="/plants/<%= garden._id %>?_method=DELETE"  method="POST" > 
              <button type="submit" class="btn">Delete  <%= garden.gardenName %> </button> 

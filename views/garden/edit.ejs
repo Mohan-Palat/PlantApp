@@ -7,10 +7,11 @@
     <nav>
       <%- include ('../partials/nav.ejs') %>
     </nav>
+   
  <form action="/plants" method="POST" enctype="multipart/form-data"  class="signup-form"> 
          <!-- form header -->
       <div class="form-header">
-        <h1>ShowCase my Garden</h1>
+        <h1>Edit my Garden</h1>
       </div>
 
         <!-- form body -->
@@ -21,14 +22,23 @@
 				<label for="gardenName" class="label-title">  GardenName: 
                 </label> 
 				<input type="text" id="gardenName" placeholder="gardenName"
-					value="" name="gardenName"  class="form-input" required> 
+					value="<%= garden.gardenName %>" name="gardenName"  class="form-input" required> 
 			</div> 
 			<div> 
 				<label for="description" class="label-title">Garden Description</label> 
-				<textarea id="description" name="description"  class="form-input" value="" rows="2"
-						placeholder="description" required> 
+                <textarea id="description" 
+                 name="description"  
+                 class="form-input" 
+                 value="<%= garden.description %> " 
+                 rows="4"
+				 required> 
 				</textarea> 
             </div> 
+<div>
+            <img src="data:garden/<%=garden.img[0].contentType%>;base64, 
+            <%=garden.img[0].data.toString('base64')%>" width="500px"> 
+            </div>
+   </div>
          
 
 			<div> 
