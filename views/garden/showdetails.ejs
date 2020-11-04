@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include ('../partials/head.ejs') %>
+  </head>
+  <body>
+    <nav>
+      <%- include ('../partials/nav.ejs') %>
+    </nav>
+<div class="center">
+  <div class ="show-header">
+      <h1>Garden Index Page</h1>
+    </div>
+    <div class="show">
+         GardenName: <%= garden.gardenName %> 
+    <br/>  <br/>  Garden Description: <%= garden.description %> 
+    <br/>  <br/>
+         <img src="data:garden/<%=garden.img[0].contentType%>;base64, 
+         <%=garden.img[0].data.toString('base64')%>" width="500px"> 
+</div>
+
+   </div>
+      
+  </body>
+</html>

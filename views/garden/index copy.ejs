@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include ('../partials/head.ejs') %>
+  </head>
+  <body>
+    <nav>
+      <%- include ('../partials/nav.ejs') %>
+    </nav>
+
+    <div id='status' class='invisible'><%= errormessage %></div>
+    dsfsdfdsfsdfsdf
+    <!--  <h1>Garden Index Page</h1>
+      <ul>
+        <% for (let garden of gardens ) { %>
+          <li>
+            <a href="/plants/<%=garden._id%>">
+             GardenName: <%= garden.gardenName %>
+              <br/>
+              <img src="data:garden/<%=garden.img[0].contentType%>;base64, 
+              <%=garden.img[0].data.toString('base64')%>"> 
+
+           
+             
+          </li>
+       <% } %>
+      </ul>-->
+ 
+
+
+  
+   
+      <script>
+        if($('div#status').text()!='')
+        {
+                  alert($('div#status').text());
+        }
+  </script>
+  
+  </body>
+</html>

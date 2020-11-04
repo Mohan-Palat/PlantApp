@@ -38,83 +38,87 @@ gardens.get('/new', (req, res) => {
 
 
 
-// Retriving the image 
-// Retriving the image 
-// gardens.get('/images', (req, res) => { 
-//     Garden.find({}, (err, items) => { 
-//         if (err) { 
-//             console.log(err); 
-//         } 
-//         else { 
-//             'garden/new.ejs'
-//        , {currentUser: req.session.currentUser}
-//         } 
-//     }); 
-//   }); 
-  
-  // Uploading the image 
-
   gardens.post('/', upload.single('image'), (req, res, next) => { 
     console.log("success");
     let fname='uploads/'+req.file.filename;
     console.log('filepath====',req.file.path);
     console.log('filepath====',req.file.mimetype);
-    res.status(204).end();
-    //const newImg = fs.readFileSync(path.join( '/Users/sunitha/sei/project-2/uploads/' + req.file.filename));
-    //const encImg = newImg.toString('base64');
     const obj = { 
         gardenName: req.body.gardenName,
         description: req.body.description,
-        //image:  Buffer.from(encImg, 'base64')
-
-        //  gardenType:'herb',
-         img: { 
+        img: { 
             data: fs.readFileSync(path.join( '/Users/sunitha/sei/project-2/uploads/' + req.file.filename)), 
             contentType: req.file.mimetype
            
          } ,
-        //image: Buffer.from(encImg, 'base64')
     } 
    Garden.create(obj, (err, item) => { 
         if (err) { 
             console.log(err); 
         } 
         else { 
-            console.log('success'); 
-            // item.save(); 
-          //  res.redirect('/'); 
-        } 
-    }); 
-  
+            //console.log('what is item--->',item);
+            //console.log('success'); 
+            res.render('garden/index.ejs', {
+               currentUser: req.session.currentUser
+               ,errormessage: 'Success-Record Created' 
+               });    
+        
+         } 
+        
+     }); 
 
-   
-  }); 
+   }); 
 
 // INDEX
-gardens.get('/', (req, res) => {
+gardens.get('/show', (req, res) => {
     Garden.find({}, (error, allGarden) => {
          console.log(error);
          console.log('all garden',allGarden);
-           res.render('garden/index.ejs', {
+           res.render('garden/show.ejs', {
            gardens: allGarden
           ,currentUser: req.session.currentUser
-        
-          });
-          
-        })
+       
+           });
+         })
       })
 
 
-// SHOW
+
+// SHOW details
 gardens.get('/:id', (req, res) => {
     console.log('garden by id');
     Garden.findById(req.params.id, (error, foundGarden) => {
+        res.render('garden/showdetails.ejs', {
+            garden: foundGarden
+           ,currentUser: req.session.currentUser
+         });
         //res.setHeader('content-type', foundGarden.img[0].contentType);
         //res.send(foundGarden.img[0].data);
-        console.log(foundGarden);
+        //console.log(foundGarden);
      })
   })
+//DELETE
 
+// DELETE
+gardens.delete('/:id', (req, res) => {
+    Garden.findByIdAndRemove(req.params.id, (error) => {
+        console.log('deleted')
+        res.render('garden/index.ejs',{
+            currentUser: req.session.currentUser,
+            errormessage: 'deleted' 
+         });
+    //  res.redirect('/garden/show');
+    });
+  });
+  
 
-
-  module.exports = gardens
+  gardens.get('/', (req, res) => {
+    res.render('garden/index.ejs',{
+        currentUser: req.session.currentUser,
+        errormessage: '' 
+     });
+    });
+  
+  
+module.exports = gardens

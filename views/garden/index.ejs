@@ -8,28 +8,10 @@
       <%- include ('../partials/nav.ejs') %>
     </nav>
 
-
-    <!--  <h1>Garden Index Page</h1>
-      <ul>
-        <% for (let garden of gardens ) { %>
-          <li>
-            <a href="/plants/<%=garden._id%>">
-             GardenName: <%= garden.gardenName %>
-              <br/>
-              <img src="data:garden/<%=garden.img[0].contentType%>;base64, 
-              <%=garden.img[0].data.toString('base64')%>"> 
-
-           
-             
-          </li>
-       <% } %>
-      </ul>-->
- 
-
+    <div id='status' class='invisible'><%= errormessage %>XCZCXZC</div>
 
   
    
-
   
   </body>
 </html>

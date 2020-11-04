@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include ('../partials/head.ejs') %>
+  </head>
+  <body>
+    <nav>
+      <%- include ('../partials/nav.ejs') %>
+    </nav>
+ <form action="/plants" method="POST" enctype="multipart/form-data"  class="signup-form"> 
+         <!-- form header -->
+      <div class="form-header">
+        <h1>ShowCase my Garden</h1>
+      </div>
+
+        <!-- form body -->
+        <div class="form-body">
+
+    
+    <div> 
+				<label for="gardenName" class="label-title">  GardenName: 
+                </label> 
+				<input type="text" id="gardenName" placeholder="gardenName"
+					value="" name="gardenName"  class="form-input" required> 
+			</div> 
+			<div> 
+				<label for="description" class="label-title">Garden Description</label> 
+				<textarea id="description" name="description"  class="form-input" value="" rows="2"
+						placeholder="description" required> 
+				</textarea> 
+            </div> 
+         
+
+			<div> 
+                <label for="choose-file" class="label-title">Upload Garden Picture</label>
+				<input type="file" id="image"
+					name="image" value="" required> 
+			</div> 
+			<div> 
+				<button type="submit" class="btn">Submit</button> 
+			</div> 
+		</form> 
+	</div> 
+
+	 
+</body> 
+
+</html> 

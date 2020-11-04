@@ -11,6 +11,8 @@ const bodyParser = require('body-parser');
 const fs = require('fs'); 
 const path = require('path'); 
 const multer = require('multer'); 
+
+
 //https://www.npmjs.com/package/multer
 
 const storage = multer.diskStorage({ 
@@ -32,6 +34,9 @@ require('dotenv/config');
 //___________________
 // Allow use of Heroku's port or your own local port, depending on the environment
 const PORT = process.env.PORT || 3000;
+
+
+
 app.use(
     session({
       secret: process.env.SECRET, //a random string do not copy this value or your stuff will get hacked
@@ -89,14 +94,12 @@ const gardenController = require('./controllers/garden_controller.js')
 app.use('/plants', gardenController)
 
 
-
 // Routes
 app.get('/', (req, res) => {
     console.log("im here");
     console.log( req.params);
     res.redirect('/plants')
   })
-
 
 //___________________
 //Listener
