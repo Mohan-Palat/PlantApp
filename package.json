@@ -23,7 +23,7 @@
   "homepage": "https://github.com/sunitha1022/project-2#readme",
   "dependencies": {
     "axios": "^0.21.0",
-    "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
