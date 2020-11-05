@@ -21,14 +21,9 @@ body {
 }
 
 
-/* body {
-  background: url(https://images.clipartlogo.com/files/istock/previews/8741/87414357-apple-seamless-pastel-colors-pattern-fruits-texture-background.jpg);
-  margin: 0;
-  font-family: "Comfortaa", cursive;
-} */
 nav {
-    position: fixed;   /* Set the navbar to fixed position */
-    top: 0;   /* Position the navbar at the top of the page */
+    position: fixed;  
+    top: 0;   
     width: 100%;
     /* height: 10%; */
     display: block;
@@ -241,6 +236,7 @@ li a {
         padding-right: 30px;
         padding-top: 30px;
         overflow: auto;
+        font-size:27px;
        
      }
     .show-header  {
@@ -271,4 +267,17 @@ li a {
         border-left: 1px solid #CCCCCC;
       }
 
-   
+      .banner  {
+        width:650px;
+        margin-top: 130px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        background: rgb(121, 160, 109);
+       
+      }
+
+      .welcomefont {
+        background: rgb(121, 160, 109);
+        font-size: 26px;
+        color: rgb(125,91,197);
+      }

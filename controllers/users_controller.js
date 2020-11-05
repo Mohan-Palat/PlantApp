@@ -13,7 +13,11 @@ router.post('/', (req, res) => {
     bcrypt.genSaltSync(10))
     User.create(req.body, (err, createdUser) => {
     console.log('user is created', createdUser)
-    res.redirect('/')
+   // res.redirect('/')
+    res.render('garden/index.ejs',{
+    currentUser: req.session.currentUser,
+    errormessage: 'User Created' 
+ });
   })
 })
 module.exports = router

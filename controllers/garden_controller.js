@@ -10,16 +10,6 @@ const multer = require('multer');
 const root = path.dirname(require.main.filename)
 console.log(root)
 
-// router.get('/:id', async (req, res) => {
-//     let movie = await Movie.findById(req.params.id).populate('actors');
-//     console.log(movie);
-//     res.render('movies/show', { movie, currentUser: req.session.currentUser });
-//   });
-  
-//   router.post('/', async (req, res) => {
-//     let movie = await Movie.create(req.body);
-//     res.redirect(`/movies/${movie.id}`);
-//   });
 const storage = multer.diskStorage({ 
   destination: (req, file, cb) => { 
       cb(null, 'uploads') 
@@ -108,7 +98,7 @@ gardens.delete('/:id',async (req, res) => {
         console.log('deleted')
         res.render('garden/index.ejs',{
             currentUser: req.session.currentUser,
-            errormessage: 'deleted' 
+            errormessage: 'Garden deleted' 
          });
     //  res.redirect('/garden/show');
     });

@@ -96,7 +96,6 @@ app.use('/plants', gardenController)
 const hardnessController = require('./controllers/hardness_controller.js')
 app.use('/hardness', hardnessController)
 
-
 // Routes
 app.get('/', (req, res) => {
     console.log("im here");

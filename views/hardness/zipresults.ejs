@@ -7,20 +7,24 @@
     <nav>
       <%- include ('../partials/nav.ejs') %>
     </nav>
-   
-      <div class="form-header">
+    <div class="center">
+      <div class="banner">
         <h1> My hardness zone</h1>
       </div>
 
         <!-- form body -->
-        <div class="form-body">
-          
-           
-                 <%= list.zone %>
-                  <%= list.coordinates %>
-                  <%= list.temperature_range %>
-              
-              
+        <div class="show">
+            <br/>
+        Hardness Zone:  <%= list.zone %> <br/>
+        Coordinates  Latitude <%= list.coordinates.lat %> 
+        <br/>        Longitude  <%= list.coordinates.lon %> <br/>
+        Temperature Range: <%= list.temperature_range %>
+        <br/>
+        State Code: <%= code%> 
+        <br/>
+        State Name:  <%= stateName%> 
+         </div>
+        </div>      
  
   </body>
 </html>
