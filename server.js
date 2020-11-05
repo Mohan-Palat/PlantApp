@@ -3,7 +3,6 @@
 //___________________
 require('dotenv').config()
 const session = require('express-session')
-
 const express = require('express');
 const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
@@ -95,6 +94,10 @@ app.use('/plants', gardenController)
 
 const hardnessController = require('./controllers/hardness_controller.js')
 app.use('/hardness', hardnessController)
+
+const plantsController = require('./controllers/plant_controller.js')
+app.use('/plantssch', plantsController)
+
 
 // Routes
 app.get('/', (req, res) => {

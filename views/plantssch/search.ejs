@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <%- include ('../partials/head.ejs') %>
+</head>
+
+<body>
+    <nav>
+        <%- include ('../partials/nav.ejs') %>
+    </nav>
+    <form action="/hardness/zip" method="post" class="signup-form">
+        <div class="form-header">
+            <h1> Show my hardness zone</h1>
+        </div>
+
+        <!-- form body -->
+        <div class="form-body">
+
+
+            <div>
+                <label for="zipcode" class="label-title">  Zip Code: 
+                  </label>
+                <input type="text" id="zipcode" placeholder="zipcode" value="" name="zipcode" class="form-input" required>
+            </div>
+            <h5>OR</h5>
+            <div>
+                <label for="hardnesszone" class="label-title">  Hardness Zone: 
+                  </label>
+                <input type="text" id="hardnesszone" placeholder="hardnesszone" value="" name="hardnesszone" class="form-input" required>
+            </div>
+            <br/><br/>
+
+            <div>
+                <select name="Month" class="label-title" id="sb">
+          <option>- Month -</option>
+          <option value="January">January</option>
+          <option value="Febuary">Febuary</option>
+          <option value="March">March</option>
+          <option value="April">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+          <option value="July">July</option>
+          <option value="August">August</option>
+          <option value="September">September</option>
+          <option value="October">October</option>
+          <option value="November">November</option>
+          <option value="December">December</option>
+          
+</select>
+            </div>
+
+
+
+            <input type="submit" value="Submit" class="btn">
+        </div>
+    </form>
+
+
+</body>
+
+</html>
