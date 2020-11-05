@@ -22,7 +22,11 @@ router.post('/', (req, res) => {
       res.send('oops the db had a problem')
     } else if (!foundUser) {
       // if found user is undefined/null not found etc
-      res.send('<a  href="/">Sorry, no user found </a>')
+      //res.send('<a  href="/">Sorry, no user found </a>')
+      res.render('garden/index.ejs',{
+        currentUser: req.session.currentUser,
+        errormessage: 'password does not match' 
+      })
     } else {
       // user is found yay!
       // now let's check if passwords match

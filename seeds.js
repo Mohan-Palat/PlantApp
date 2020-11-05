@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Garden = require('./models/garden');
+const Garden = require('./models/gardens');
 const User = require('./models/users');
 const mongoURI = 'mongodb://localhost/garden_auth';
 mongoose.connect(
