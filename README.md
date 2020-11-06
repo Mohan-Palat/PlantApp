@@ -1,4 +1,18 @@
 # project-2
+# Description:
+  The application will allow you to upload your garden pictures and browser others fellow gardener's pictures. You can check the hardiness zone and search plants you can plant based on the season
+
+#Technologies used
+  
+  1. Node js
+  2. Express
+  3. Heroku
+  4. Mongo DB
+  5. HTML
+  6. CSS
+# Application Link
+
+https://sunitha-project2.herokuapp.com/plants
 
 # Wire Frames
 
