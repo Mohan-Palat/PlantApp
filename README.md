@@ -59,3 +59,7 @@ Plants
 User to Garden ( one to Many)
 
 HardinessZone to Plants (many to many)
+
+# Issues
+
+Images are not showing up in an array
