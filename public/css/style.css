@@ -306,3 +306,16 @@ input[type="file"] {
 #sb option {
     width: 350px;
 }
+
+.btn1 {
+    margin-top: 20px;
+    margin-left: 250px;
+    padding: 10px 10px;
+    font-weight: bold;
+    background-color: rgb(121, 160, 109);
+    font-size: 17px;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    cursor: pointer;
+}
