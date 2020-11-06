@@ -1,58 +1,52 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+
+<head>
     <%- include ('../partials/head.ejs') %>
-  </head>
-  <body>
+</head>
+
+<body>
     <nav>
-      <%- include ('../partials/nav.ejs') %>
+        <%- include ('../partials/nav.ejs') %>
     </nav>
-   
- <form action="/plants" method="POST" enctype="multipart/form-data"  class="signup-form"> 
-         <!-- form header -->
-      <div class="form-header">
-        <h1>Edit my Garden</h1>
-      </div>
+
+    <form action="/plants" method="POST" enctype="multipart/form-data" class="signup-form">
+        <!-- form header -->
+        <div class="form-header">
+            <h1>Edit my Garden</h1>
+        </div>
 
         <!-- form body -->
         <div class="form-body">
 
-    
-    <div> 
-				<label for="gardenName" class="label-title">  GardenName: 
-                </label> 
-				<input type="text" id="gardenName" placeholder="gardenName"
-					value="<%= garden.gardenName %>" name="gardenName"  class="form-input" required> 
-			</div> 
-			<div> 
-				<label for="description" class="label-title">Garden Description</label> 
-                <textarea id="description" 
-                 name="description"  
-                 class="form-input" 
-                 value="<%= garden.description %> " 
-                 rows="4"
-				 required> 
-				</textarea> 
-            </div> 
-<div>
-            <img src="data:garden/<%=garden.img[0].contentType%>;base64, 
-            <%=garden.img[0].data.toString('base64')%>" width="500px"> 
+
+            <div>
+                <label for="gardenName" class="label-title">  GardenName: 
+                </label>
+                <input type="text" id="gardenName" placeholder="gardenName" value="<%= garden.gardenName %>" name="gardenName" class="form-input" required>
             </div>
-   </div>
-         
+            <div>
+                <label for="description" class="label-title">Garden Description</label>
+                <input type="text" id="description" placeholder="description" value="<%=garden.description %>" name="description" class="form-input" required>
+            </div>
+            <div>
+                <img src="data:garden/<%=garden.img[0].contentType%>;base64, 
+            <%=garden.img[0].data.toString('base64')%>" width="500px">
+            </div>
+        </div>
 
-			<div> 
-                <label for="choose-file" class="label-title">Upload Garden Picture</label>
-				<input type="file" id="image"
-					name="image" value="" required> 
-			</div> 
-			<div> 
-				<button type="submit" class="btn">Submit</button> 
-			</div> 
-		</form> 
-	</div> 
 
-	 
-</body> 
+        <div>
+            <label for="choose-file" class="label-title">Upload Garden Picture</label>
+            <input type="file" id="image" name="image" value="" required>
+        </div>
+        <div>
+            <button type="submit" class="btn">Submit</button>
+        </div>
+    </form>
+    </div>
 
-</html> 
+
+</body>
+
+</html>

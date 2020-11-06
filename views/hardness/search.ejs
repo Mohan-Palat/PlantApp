@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+
+<head>
     <%- include ('../partials/head.ejs') %>
-  </head>
-  <body>
+</head>
+
+<body>
     <nav>
-      <%- include ('../partials/nav.ejs') %>
+        <%- include ('../partials/nav.ejs') %>
     </nav>
     <form action="/hardness/zip" method="post" class="signup-form">
-      <div class="form-header">
-        <h1> Show my hardness zone</h1>
-      </div>
-
+        <div class="form-header">
+            <h1> Show my hardness zone</h1>
+        </div>
+        <section> A hardiness zone is a geographic area defined to encompass a certain range of climatic conditions relevant to plant growth and survival.</section>
         <!-- form body -->
         <div class="form-body">
-        <label for="zip">Enter Zip Code:</label>
-        <input type="text" name="zip" required/>
-      
-        <br>
-        <input type="submit" value="Submit" class="btn">
+            <label for="zip">Enter Zip Code:</label>
+            <input type="text" name="zip" required/>
+
+            <br>
+            <input type="submit" value="Submit" class="btn">
         </div>
-        </form>
-  
- 
-  </body>
+    </form>
+
+
+</body>
+
 </html>
