@@ -9,21 +9,25 @@
     <nav>
         <%- include ('../partials/nav.ejs') %>
     </nav>
-    <form action="/plantssch/show" method="get" class="signup-form">
+    <form action="/plantssch/" method="post" class="signup-form">
         <div class="form-header">
-            <h1> Search Plants</h1>
+            <h1> Add Plants</h1>
         </div>
 
         <!-- form body -->
         <div class="form-body">
 
-
+            <div>
+                <label for="plantName" class="label-title"> PlantName
+                  </label>
+                <input type="text" id="plantName" placeholder="plantName" value="" name="plantName" class="form-input" required>
+            </div>
             <div>
                 <label for="zipcode" class="label-title">  Zip Code: 
                   </label>
-                <input type="text" id="zipcode" placeholder="zipcode" value="" name="zipcode" class="form-input" required>
+                <input type="text" id="zipcode" placeholder="zipcode" value="" name="zipcode" class="form-input">
             </div>
-            <h5>OR</h5>
+
             <div>
                 <label for="hardnesszone" class="label-title">  Hardness Zone: 
                   </label>
@@ -50,9 +54,15 @@
 </select>
             </div>
 
+            <div>
+                <label for="action" class="label-title"> Description</label>
+                <textarea id="action" name="action" class="form-input" value="" rows="2" placeholder="action" required> 
+				</textarea>
+            </div>
 
 
-            <input type="submit" value="Search" class="btn">
+
+            <input type="submit" value="Submit" class="btn">
         </div>
     </form>
 

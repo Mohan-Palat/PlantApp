@@ -1,5 +1,5 @@
 const express = require('express')
-const Garden = require('../models/gardens.js')
+const Plant = require('../models/plants-schedule.js')
 const plantssch = express.Router()
 const User = require('../models/users.js');
 const fs = require('fs');
@@ -25,20 +25,38 @@ plantssch.get('/showplants', (req, res) => {
 })
 
 
-plantssch.post('/', (req, res, next) => {
-    console.log("success");
-    let fname = 'uploads/' + req.file.filename;
-    console.log('filepath====', req.file.path);
-    console.log('filepath====', req.file.mimetype);
+//add plants
+
+plantssch.get('/addPlants', (req, res) => {
+    res.render(
+        'plantssch/addPlants.ejs', { currentUser: req.session.currentUser }
+    )
+})
+
+//show
+plantssch.get('/show', async(req, res) => {
+    await Plant.find({}, (error, allGarden) => {
+        console.log(error);
+        console.log('all garden', allGarden);
+        res.render('plantssch/show.ejs', {
+            plants: allGarden,
+            currentUser: req.session.currentUser
+        });
+    })
+})
+
+
+plantssch.post('/', (req, res) => {
+    console.log("GOING TO ADD");
+    console.log(req.body)
     const obj = {
-        gardenName: req.body.gardenName,
-        description: req.body.description,
-        img: {
-            data: fs.readFileSync(path.join(root + '/uploads/' + req.file.filename)),
-            contentType: req.file.mimetype
-        },
+        plantName: req.body.plantName,
+        zip: req.body.zipcode,
+        month: req.body.Month,
+        zone: req.body.hardnesszone,
+        action: req.body.action
     }
-    Garden.create(obj, (err, item) => {
+    Plant.create(obj, (err, item) => {
         if (err) {
             console.log(err);
         } else {
@@ -49,8 +67,6 @@ plantssch.post('/', (req, res, next) => {
         }
     });
 });
-
-
 
 
 module.exports = plantssch

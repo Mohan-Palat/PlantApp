@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <%- include ('../partials/head.ejs') %>
+</head>
+
+<body>
+    <nav>
+        <%- include ('../partials/nav.ejs') %>
+    </nav>
+
+
+
+
+    <div class="center">
+        <div class="show-header">
+            <h1>Garden Index Page</h1>
+        </div>
+        <div class="show">
+            <ul>
+                <% for (let plant of plants ) { %>
+                    <li>
+                        <div>
+
+                            <%= plant.plantName %>
+
+                                <br/>
+
+
+                                <%= plant.action %>
+
+                        </div>
+                        <br/>
+
+
+
+                        <% } %>
+            </ul>
+
+
+        </div>
+
+    </div>
+    </form>
+</body>
+
+</html>
