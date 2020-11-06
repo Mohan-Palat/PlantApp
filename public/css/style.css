@@ -222,7 +222,6 @@ input[type="file"] {
     margin-left: 220px;
     padding: 10px 20px;
     background-color: rgb(121, 160, 109);
-    ;
     font-size: 17px;
     border: none;
     border-radius: 5px;
@@ -245,7 +244,7 @@ input[type="file"] {
 
 .show {
     width: 650px;
-    height: 500px;
+    height: 300px;
     margin: 30px auto;
     background: rgb(125, 91, 197);
     border-radius: 10px;
@@ -274,10 +273,9 @@ input[type="file"] {
 }
 
 .button {
-    font: bold 11px Arial;
+    font-size: 17px;
     text-decoration: none;
     background-color: rgb(121, 160, 109);
-    ;
     color: #333333;
     padding: 2px 6px 2px 6px;
     border-top: 1px solid #CCCCCC;

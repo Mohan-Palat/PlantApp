@@ -1,43 +1,47 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+
+<head>
     <%- include ('../partials/head.ejs') %>
-  </head>
-  <body>
+</head>
+
+<body>
     <nav>
-      <%- include ('../partials/nav.ejs') %>
+        <%- include ('../partials/nav.ejs') %>
     </nav>
 
-   
 
 
-<div class="center">
-  <div class ="show-header">
-      <h1>Garden Index Page</h1>
-    </div>
-    <div class="show">
-      <ul>
-        <% for (let garden of gardens ) { %>
-          <li><div>
-            <a href="/plants/<%=garden._id%>" class="btn">
+
+    <div class="center">
+        <div class="show-header">
+            <h1>Garden Index Page</h1>
+        </div>
+        <div class="show">
+            <ul>
+                <% for (let garden of gardens ) { %>
+                    <li>
+                        <div>
+                            <a href="/plants/<%=garden._id%>" class="button">
               Show  <%= garden.gardenName %> </a>
-             <a href="/plants/<%=garden._id%>/edit" class="btn">
+                            <a href="/plants/<%=garden._id%>/edit" class="button">
                 Edit  <%= garden.gardenName %> </a>
-              <form action="/plants/<%= garden._id %>?_method=DELETE"  method="POST" > 
-             <button type="submit" class="btn">Delete  <%= garden.gardenName %> </button> 
-            </form>
-            </div>
-			<br/>
-            </li>
-        
-         
-       <% } %>
-      </ul>
- 
+                            <form action="/plants/<%= garden._id %>?_method=DELETE" method="POST">
+                                <button type="submit" class="btn">Delete  <%= garden.gardenName %> </button>
+                            </form>
+                        </div>
+                        <br/>
+                    </li>
 
-</div>
 
-   </div>
-      </form>
-  </body>
+                    <% } %>
+            </ul>
+
+
+        </div>
+
+    </div>
+    </form>
+</body>
+
 </html>
